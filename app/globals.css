@@ -1,8 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8f7ff;
+  --foreground: #1a1a2e;
+  --card: #ffffff;
+  --card-border: #e8e4f0;
+  --muted: #6b7280;
+  --accent: #7c3aed;
+}
+
+.dark {
+  --background: #0f0e17;
+  --foreground: #fffffe;
+  --card: #1a1a2e;
+  --card-border: #2d2b42;
+  --muted: #9ca3af;
+  --accent: #a78bfa;
 }
 
 @theme inline {
@@ -12,15 +25,56 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom range slider */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 9999px;
+  background: linear-gradient(to right, #7c3aed, #ec4899);
+  outline: none;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #7c3aed;
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 0 0 2px #7c3aed;
+  transition: transform 0.15s ease;
+}
+
+input[type='range']::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* Smooth card transitions */
+.card {
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Date input dark mode fix */
+input[type='date']::-webkit-calendar-picker-indicator {
+  filter: invert(0);
+}
+
+.dark input[type='date']::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+/* Select dark mode fix */
+.dark select option {
+  background-color: #1a1a2e;
+  color: #fffffe;
 }
