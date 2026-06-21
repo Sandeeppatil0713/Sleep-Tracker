@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Record } from '@/types/Record';
 import deleteRecord from '@/app/actions/deleteRecord';
 
-const QUALITY_EMOJI: Record<string, string> = {
+const QUALITY_EMOJI: { [key: string]: string } = {
   Refreshed: '🌞',
   Energetic: '⚡',
   Neutral: '😐',
